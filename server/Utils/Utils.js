@@ -14,3 +14,6 @@ export const generateToken = (user) => {
     }
   );
 };
+const hello = () => {
+  
+}
