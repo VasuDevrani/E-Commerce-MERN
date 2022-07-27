@@ -1,0 +1,22 @@
+{
+  "name": "e-commerce-mern",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd server && npm install && cd ../client && npm install && npm run build",
+    "start": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VasuDevrani/E-Commerce-MERN.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VasuDevrani/E-Commerce-MERN/issues"
+  },
+  "homepage": "https://github.com/VasuDevrani/E-Commerce-MERN#readme",
+  "description": ""
+}

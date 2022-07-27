@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import path from 'path'
 import mongoose from "mongoose";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -37,6 +38,11 @@ app.use('/api/seed', seedRouter);
 app.use('/api/users', UserRoutes);
 app.use('/api/product/add', addRoutes);
 
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/client/build')));
+
+app.get('*', (req, res) => 
+res.sendFile(path.join(__dirname, '/client/build/index.html')))
 
 app.listen(process.env.PORT, () => {
   console.log(`app connected to PORT ${process.env.PORT}`);
