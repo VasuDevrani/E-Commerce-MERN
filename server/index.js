@@ -8,6 +8,7 @@ import bodyParser from "body-parser";
 import productRoutes from "./Routes/ProductRoutes.js";
 import seedRouter from "./Routes/SeedRoutes.js";
 import UserRoutes from './Routes/UserRoutes.js'
+import addRoutes from "./Routes/AddRoute.js";
 
 
 const app = express();
@@ -34,6 +35,8 @@ mongoose
 app.use("/api/products", productRoutes);
 app.use('/api/seed', seedRouter);
 app.use('/api/users', UserRoutes);
+app.use('/api/product/add', addRoutes);
+
 
 app.listen(process.env.PORT, () => {
   console.log(`app connected to PORT ${process.env.PORT}`);

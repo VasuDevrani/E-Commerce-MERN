@@ -5,7 +5,7 @@ import { Store } from "../Store";
 export default function Navbar() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
-  const {isSeller} = userInfo ? userInfo : '';
+  const { isSeller } = userInfo ? userInfo : "";
 
   const handleSignOut = () => {
     ctxDispatch({ type: "USER_SIGNOUT" });
@@ -30,11 +30,21 @@ export default function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav">
-            {isSeller ? 
+            {isSeller ? (
               <li className="nav-item text-light my-2 fs-7 mx-2">
+                <Link
+                  to="/addproducts"
+                  style={{
+                    textDecoration: "none",
+                    color: "rgba(255, 255, 255, 0.55)",
+                  }}
+                >
                   Add Products
-              </li> : ('')
-          }
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
             {userInfo ? (
               <li className="nav-item dropdown mx-2">
                 <a
@@ -57,13 +67,13 @@ export default function Navbar() {
                       Order History
                     </a>
                   </li>
-                  {!isSeller && 
-                      <li>
+                  {!isSeller && (
+                    <li>
                       <Link className="dropdown-item" to="/becomeSeller">
                         Become Seller
                       </Link>
                     </li>
-                  }
+                  )}
                   <li>
                     <a
                       className="dropdown-item"

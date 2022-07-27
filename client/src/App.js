@@ -14,6 +14,7 @@ import SignUp from "./Pages/SignUp";
 import BeSeller from "./Pages/BeSeller";
 import PaymentMethod from "./Pages/PaymentMethod";
 import PlaceOrder from "./Pages/PlaceOrder";
+import AddProducts from "./Pages/AddProducts";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path='/becomeSeller' element={<BeSeller/>}/>
             <Route path='/payment' element={<PaymentMethod/>}/>
             <Route path='/order' element={<PlaceOrder/>}/>
+            <Route path='/addproducts' element={<AddProducts/>}/>
           </Routes>
         </main>
         {/* footer */}
