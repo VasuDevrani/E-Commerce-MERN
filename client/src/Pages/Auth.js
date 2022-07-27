@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Store } from '../Store.js'
+import { toast } from "react-toastify";
 
 export default function Auth() {
   const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get("redirect");
   const redirect = redirectInUrl ? redirectInUrl : "/";
+
+  const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
     email: "",
@@ -19,6 +23,10 @@ export default function Auth() {
       password: "",
     });
   };
+
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { userInfo } = state;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -32,8 +40,16 @@ export default function Auth() {
       });
 
       console.log(data);
+
+      // save to store and local storage(for addressing the refresh)
+      ctxDispatch({type: 'USER_SIGNIN', payload: data});
+      localStorage.setItem('userinfo', JSON.stringify(data));
+
+      navigate(redirect || '/');
+
     } catch (err) {
       console.log(err.message);
+      toast.error('Invalid email or password');
     }
     reset();
   };
@@ -41,6 +57,12 @@ export default function Auth() {
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+      if(userInfo){
+        navigate(redirect)
+      }
+    }, [navigate, redirect, userInfo])
 
   return (
     <div className="container small-container">
