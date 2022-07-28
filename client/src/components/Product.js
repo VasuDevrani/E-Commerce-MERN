@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Store } from "../Store";
+import Rating from "./Rating";
 
 export default function Product({ product }) {
   const { state, dispatch } = useContext(Store);
@@ -37,6 +38,7 @@ export default function Product({ product }) {
             {product.name}
           </Link>
         </h5>
+        <Rating rating={product.rating} numReviews={product.numReviews ? product.numReviews : 'No'} />
         <div className="card-text my-3">
           <strong>₹ {product.price}</strong>
         </div>

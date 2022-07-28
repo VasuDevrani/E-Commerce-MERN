@@ -63,9 +63,9 @@ export default function Navbar() {
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="/">
+                    <Link className="dropdown-item" to="/orderhistory">
                       Order History
-                    </a>
+                    </Link>
                   </li>
                   {!isSeller && (
                     <li>

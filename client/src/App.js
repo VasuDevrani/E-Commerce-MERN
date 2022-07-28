@@ -15,6 +15,7 @@ import BeSeller from "./Pages/BeSeller";
 import PaymentMethod from "./Pages/PaymentMethod";
 import PlaceOrder from "./Pages/PlaceOrder";
 import AddProducts from "./Pages/AddProducts";
+import OrderHistory from "./Pages/OrderHistory";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path='/payment' element={<PaymentMethod/>}/>
             <Route path='/order' element={<PlaceOrder/>}/>
             <Route path='/addproducts' element={<AddProducts/>}/>
+            <Route path='/orderhistory' element={<OrderHistory/>}/>
           </Routes>
         </main>
         {/* footer */}

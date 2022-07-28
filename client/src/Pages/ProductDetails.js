@@ -9,6 +9,7 @@ import { getError } from "../utils/utils.js";
 import { productReducer } from "../reducers/ProductReducer.js";
 import Loading from "../components/Loading.js";
 import { Store } from "../Store.js";
+import Rating from "../components/Rating.js";
 
 export default function ProductDetails() {
   const navigate = useNavigate();
@@ -93,6 +94,14 @@ export default function ProductDetails() {
                   <div className="list-group-item">
                     Description: <p>{product.description}</p>
                   </div>
+                  <div className="list-group-item">
+                    <Rating
+                      rating={product.rating}
+                      numReviews={
+                        product.numReviews ? product.numReviews : "No"
+                      }
+                    />
+                  </div>
                 </div>
               </div>
               <div className="col">
@@ -103,7 +112,7 @@ export default function ProductDetails() {
                       <div className="list-group-item">
                         <div className="row">
                           <div className="col">Price: </div>
-                          <div className="col">${product.price} </div>
+                          <div className="col">Rs {product.price} </div>
                         </div>
                       </div>
                       {/*  */}

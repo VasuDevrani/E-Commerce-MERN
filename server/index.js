@@ -10,7 +10,7 @@ import productRoutes from "./Routes/ProductRoutes.js";
 import seedRouter from "./Routes/SeedRoutes.js";
 import UserRoutes from './Routes/UserRoutes.js'
 import addRoutes from "./Routes/AddRoute.js";
-
+import orderRoutes from "./Routes/OrderRoutes.js";
 
 const app = express();
 dotenv.config();
@@ -37,7 +37,10 @@ app.use("/api/products", productRoutes);
 app.use('/api/seed', seedRouter);
 app.use('/api/users', UserRoutes);
 app.use('/api/product/add', addRoutes);
+app.use('/api/order', orderRoutes);
 
+
+// for hosting on heroku
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, '/client/build')));
 
